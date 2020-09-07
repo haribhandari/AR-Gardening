@@ -1,10 +1,7 @@
 {
   "expo": {
-    "name": "Blank Template",
-    "slug": "CurrencyConverter",
-    "privacy": "public",
-    "sdkVersion": "36.0.0",
-    "platforms": ["ios", "android", "web"],
+    "name": "GardeningApp",
+    "slug": "GardeningApp",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -16,12 +13,14 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true
     },
-    "androidStatusBar": {
-      "translucent": false
+    "web": {
+      "favicon": "./assets/favicon.png"
     }
   }
 }
