@@ -41,7 +41,7 @@ export default class HelloWorldSceneAR extends Component {
         <ViroSpotLight innerAngle={5} outerAngle={90} direction={[0, -1, -.2]}
           position={[0, 3, 1]} color="#ffffff" castsShadow={true} />
         <ViroNode position={[0, -1, 0]} dragType="FixedToWorld" onDrag={() => { }} >
-          <Viro3DObject
+          {/* <Viro3DObject
             source={require('./res/emoji_smile/emoji_smile.vrx')}
             resources={[require('./res/emoji_smile/emoji_smile_diffuse.png'),
             require('./res/emoji_smile/emoji_smile_normal.png'),
@@ -62,8 +62,22 @@ export default class HelloWorldSceneAR extends Component {
               require('./res/plant/sand_normal.jpg'),
               require('./res/plant/stem.jpg'),
             ]}
+            onError={this.onError}
             position={[0, -10, -10]}
             scale={[.005, .005, .001]}
+            type="OBJ"
+          /> */}
+
+           <Viro3DObject
+            source={require('./res/plant2/indoorplant_02.obj')}
+            resources={[
+              require('./res/plant2/indoorplant_02.mtl'),
+              require('./res/plant2/plant_2_COL.jpg'),
+              require('./res/plant2/plant_2_NOR.jpg'),
+              require('./res/plant2/plant_2_vl.jpg'),
+            ]}
+            position={[0, -15, -15]}
+            scale={[1, 1, 1]}
             type="OBJ"
 
           />
