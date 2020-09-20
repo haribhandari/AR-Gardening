@@ -68,7 +68,7 @@ export default class HelloWorldSceneAR extends Component {
             type="OBJ"
           /> */}
 
-           <Viro3DObject
+           {/* <Viro3DObject
             source={require('./res/plant2/indoorplant_02.obj')}
             resources={[
               require('./res/plant2/indoorplant_02.mtl'),
@@ -80,7 +80,82 @@ export default class HelloWorldSceneAR extends Component {
             scale={[1, 1, 1]}
             type="OBJ"
 
+          /> */}
+
+                   {/* <Viro3DObject
+            source={require('./res/plant3/12974_crocus_flower_v1_l3.obj')}
+            resources={[
+              require('./res/plant3/12974_crocus_flower_v1_l3.mtl'),
+              require('./res/plant3/12974_crocus_flower_diff.jpg'),
+            ]}
+            position={[0, -15, -15]}
+            scale={[0.25, 0.25, 0.25]}
+            type="OBJ"
+
+          /> */}      
+
+         {/* <Viro3DObject
+            source={require('./res/plant4/tree.obj')}
+            resources={[
+              require('./res/plant4/tree.mtl'),
+              require('./res/plant4/tree.png')
+            ]}
+            position={[0, -15, -15]}
+            scale={[2, 2, 2]}
+            type="OBJ"
+
+          />  */}  
+
+          {/* <Viro3DObject
+            source={require('./res/plant5/10432_Aloe_Plant_v1_max2008_it2.obj')}
+            resources={[
+              require('./res/plant5/10432_Aloe_Plant_v1_max2008_it2.mtl'),
+              require('./res/plant5/10432_Aloe_Plant_v1_Diffuse.jpg'),
+            ]}
+            position={[0, -15, -15]}
+            scale={[0.5, 0.5, 0.5]}
+            type="OBJ"
+
+          />  */} 
+
+          {/* <Viro3DObject
+            source={require('./res/plant6/10435_Begonia_v3_L3.obj')}
+            resources={[
+              require('./res/plant6/10435_Begonia_v3_L3.mtl'),
+              require('./res/plant6/10435_Begonia_v002DiffuseMap.jpg'),
+            ]}
+            position={[-1, -15, -15]}
+            scale={[0.25, 0.25, 0.25]}
+            type="OBJ"
+
+          />  */} 
+          
+          {/*  <Viro3DObject
+            source={require('./res/plant7/10461_Yucca_Plant_v1_max2010_it2.obj')}
+            resources={[
+              require('./res/plant7/10461_Yucca_Plant_v1_max2010_it2.mtl'),
+              require('./res/plant7/10461_Yucca_Plant_v1_Diffuse.jpg'),
+            ]}
+            position={[0, -15, -15]}
+            scale={[0.1, 0.1, 0.1]}
+            type="OBJ"
+
+          />  */} 
+
+          <Viro3DObject
+            source={require('./res/plant8/bush.obj')}
+            resources={[
+              require('./res/plant8/bush.mtl'),
+              require('./res/plant8/bush01.png'),
+              require('./res/plant8/bush02.png'),
+              require('./res/plant8/bush03.png')
+            ]}
+            position={[0, -15, -15]}
+            scale={[2.5, 2.5, 2.5]}
+            type="OBJ"
+
           />
+
         </ViroNode>
       </ViroARScene>
     );
