@@ -33,7 +33,7 @@ export default () => {
       <StatusBar barStyle="light-content" backgroundColor={colors.blue} />
       <View style={styles.logoContainer}>
         <Image
-          source={require("../assets/images/background.png")}
+          source={require("../assets/images/bug.png")}
           style={styles.logoBackground}
           resizeMode="contain"
         />
