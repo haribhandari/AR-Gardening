@@ -9,6 +9,7 @@
   "dependencies": {
     "react": "16.8.3",
     "react-native": "0.59.3",
+    "react-timer-mixin": "^0.13.4",
     "react-viro": "2.17.0"
   },
   "devDependencies": {
