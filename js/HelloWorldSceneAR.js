@@ -1,7 +1,8 @@
 'use strict';
 
 import React, { Component } from 'react';
-
+import ModelItemRender from './component/ModelItemRender';
+import { connect } from 'react-redux';
 import { StyleSheet } from 'react-native';
 
 import {
@@ -27,12 +28,13 @@ export default class HelloWorldSceneAR extends Component {
     this.state = {
       text: "Initializing AR..."
     };
-
+    this._renderModels = this._renderModels.bind(this);
     // bind 'this' to functions
     this._onInitialized = this._onInitialized.bind(this);
   }
 
   render() {
+    let models = this._renderModels(this.props.modelItems, startingBitMask);
     return (
       <ViroARScene onTrackingUpdated={this._onInitialized} >
         <ViroText text={this.state.text} scale={[.5, .5, .5]} position={[0, 0, -1]} style={styles.helloWorldTextStyle} />
@@ -82,6 +84,7 @@ export default class HelloWorldSceneAR extends Component {
 
           />
         </ViroNode>
+        {models}
       </ViroARScene>
     );
   }
@@ -95,6 +98,28 @@ export default class HelloWorldSceneAR extends Component {
       // Handle loss of tracking
     }
   }
+  _renderModels(modelItems, startingBitMask) {
+    var renderedObjects = [];
+    if(modelItems) {
+      var root = this;
+      let objBitMask = startingBitMask;
+      Object.keys(modelItems).forEach(function(currentKey) {
+        if(modelItems[currentKey] != null && modelItems[currentKey] != undefined) {
+          renderedObjects.push(
+            <ModelItemRender key={modelItems[currentKey].uuid}
+              modelIDProps={modelItems[currentKey]}
+              hitTestMethod={root._performARHitTest}
+              onLoadCallback={root._onLoadCallback}
+              onClickStateCallback={root._onModelsClickStateCallback}
+              bitMask={Math.pow(2,objBitMask)} />
+          );
+        }
+        objBitMask++;
+      });
+  
+    }
+    return renderedObjects;
+  }
 }
 
 var styles = StyleSheet.create({
@@ -106,6 +131,13 @@ var styles = StyleSheet.create({
     textAlign: 'center',
   },
 });
+
+function selectProps(store) {
+  return {
+    modelItems: store.arobjects.modelItems,
+  };
+}
+
 
 // ViroMaterials.createMaterials({
 //   grid: {
