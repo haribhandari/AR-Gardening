@@ -62,6 +62,11 @@ export default class App extends React.Component {
         name: 'Buy Planting Products',
         photo:
           'https://cdn.pixabay.com/photo/2020/04/17/19/48/city-5056657_960_720.png'
+      },
+      {
+        name: 'Planting Tips',
+        photo:
+          'https://www.uhi.ac.uk/en/t4-media/one-web/university/educational-development-unit/weekly-tip_small.png'
       }
     ],
     images: [
@@ -92,14 +97,14 @@ export default class App extends React.Component {
         <SliderBox
           //ImageComponent={FastImage}
           images={this.state.images}
-          sliderBoxHeight={200}
+          sliderBoxHeight={300}
           dotColor="#000000"
           inactiveDotColor="#90A4AE"
           paginationBoxVerticalPadding={20}
           autoplay
           circleLoop
-          resizeMethod="resize"
-          resizeMode="cover"
+          resizeMethod="auto"
+          resizeMode="contain"
           paginationBoxStyle={{
             position: 'absolute',
             bottom: 0,
