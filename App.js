@@ -104,9 +104,9 @@ export default class ViroSample extends Component {
     'Choose an object',
     'Select an object to place in the world!',
     [
-      {text: 'plan1', onPress: () => this._onShowObject(0, "coffee_mug", 0)},
-      {text: 'plan2', onPress: () => this._onShowObject(1, "flowers", .290760)},
-      {text: 'plan3', onPress: () => this._onShowObject(2, "smile_emoji", .497823)},
+      {text: 'Plant1', onPress: () => this._onShowObject(0, "coffee_mug", 0)},
+      {text: 'Plant2', onPress: () => this._onShowObject(1, "flowers", .290760)},
+      {text: 'Plant3', onPress: () => this._onShowObject(2, "smile_emoji", .497823)},
     ],
     );
   }
