@@ -5,34 +5,24 @@ import { useTheme } from 'react-navigation';
 import { gStyle } from '../constants';
 
 
-const MultiBaseScreen = ({ navigation }) => {
-  const theme = useTheme();
+export default class App extends React.Component {
+ render(){
+   return(
+   <View>
+     <Text>AR Screen</Text>
+   </View>
+   );
+ }
+}
 
-  return (
-    <ScrollView
-      contentContainerStyle={gStyle.contentContainer}
-      style={gStyle.container[theme]}
-    >
-      <Text style={gStyle.text[theme]}>AR FUNCTION</Text>
+// MultiBaseScreen.navigationOptions = {
+//   headerTitleStyle: gStyle.headerTitleStyle,
+//   title: 'AR Screen'
+// };
 
-      <View style={gStyle.spacer64} />
+// MultiBaseScreen.propTypes = {
+//   // required
+//   navigation: PropTypes.object.isRequired
+// };
 
-      {/* <Touch
-        onPress={() => navigation.navigate('MultiLevel2')}
-        text="Go to level 2"
-      /> */}
-    </ScrollView>
-  );
-};
-
-MultiBaseScreen.navigationOptions = {
-  headerTitleStyle: gStyle.headerTitleStyle,
-  title: 'AR Screen'
-};
-
-MultiBaseScreen.propTypes = {
-  // required
-  navigation: PropTypes.object.isRequired
-};
-
-export default MultiBaseScreen;
+// export default MultiBaseScreen;

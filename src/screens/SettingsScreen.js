@@ -1,73 +1,109 @@
 import React from 'react';
-import { Image, ScrollView, Text, View } from 'react-native';
-import PropTypes from 'prop-types';
+import { Image, StyleSheet, Text, View, FlatList } from 'react-native';
+import PropTypes, { func } from 'prop-types';
 import { useTheme } from 'react-navigation';
-import { gStyle, images } from '../constants';
+import { gStyle, images} from '../constants';
 import Touch from '../components/Touch';
+import { firebase } from '../firebase/config';
 
-const headerImage = __DEV__ ? 'rabbitDev' : 'rabbitProd';
+export default class App extends React.Component {
+  constructor(props){
+    super(props);
 
-const SettingsScreen = ({screenProps}) => {
-  const theme = useTheme();
+    this.state = {
+      plants: [],
+    }
+    this.readData()
+  }
 
-  return (
-    <ScrollView
-      contentContainerStyle={gStyle.contentContainer}
-      style={gStyle.container[theme]}
-    >
-      {/* <Text style={gStyle.text[theme]}>Settings</Text> */}
+  // componentWillMount() {    
+  //   var reference = firebase.database().ref('/');
+  //   reference.once('value').then(snapshot => {
+  //     this.setState({plants: snapshot.val()});
+  //     // console.log(snapshot.val());
+  //   });  
+  // }
+  readData(){
+    var reference = firebase.database().ref('/');
+    reference.once('value').then(snapshot => {
+      this.setState({plants: snapshot.val()});
+      console.log(this.state.plants);
+      // console.log(snapshot.val());
+    });   
+  }
 
-      <View style={gStyle.spacer16} />
-
-      <Text style={[gStyle.text[theme], gStyle.textPacifico]}>
-        Settings
-        </Text>
-        {/* <Touch
-          onPress={() => navigation.navigate('MultiBase')}
-          text="Jump to Multi tab"
-        /> */}
-
-        <Touch
-          onPress={() => screenProps.updateTheme('light')}
-          text="Light theme"
-        />
-        <Touch
-          onPress={() => screenProps.updateTheme('dark')}
-          text="Dark theme"
-        />
-    </ScrollView>
-  );
-};
-
-SettingsScreen.navigationOptions = ({ theme }) => {
-  return {
-    // headerLeft: () => (
-    //   <View style={{ flex: 1, paddingLeft: 16 }}>
-    //     <Text style={gStyle.text[theme]}>left</Text>
-    //   </View>
-    // ),
-    // headerRight: () => (
-    //   <View style={{ flex: 1, paddingRight: 16 }}>
-    //     <Text style={gStyle.text[theme]}>right</Text>
-    //   </View>
-    // ),
-    headerTitle: () => (
-      <View style={{ flex: 1 }}>
-        <Image
-          style={{ alignSelf: 'center', height: 40, width: 40 }}
-          source={images[headerImage]}
-        />
+  
+  render() {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.text}>
+          Plants
+          </Text>
+          {/* <FlatList 
+              style={styles.listItem}
+              data={[{name:'bob'}, {name : 'Tim'}]}
+              keyExtractor={item => item.name}
+              renderItem={({ item }) => <Text>{item.name}</Text>}
+          /> */}
+          {/* <Text>{this.state.plants}</Text> */}
+          {/* <FlatList 
+            data={this.state.plants}
+            keyExtractor = {(x, i ) => i }
+            renderItem={({ item }) => <Text>{`${item.Name}`}</Text>}
+            
+          /> */}
       </View>
-    )
-  };
-};
+    );
+  }
+}
 
 
-SettingsScreen.propTypes = {
-  // required
-  navigation: PropTypes.object.isRequired,
-  screenProps: PropTypes.object.isRequired
-};
+const styles = StyleSheet.create({
+  container: {
+    // flex: 1,
+    backgroundColor: '#F7F7F7',
+    // marginTop:60
+  },
+  listItem:{
+    fontSize: 40,
+    textAlign: "center",
+    margin: 'auto'
+  },
+  text: {
+    marginTop: 16, 
+    fontSize: 34,
+     textAlign: "center",
+     fontSize: 30,
+  }
+});
+
+
+// SettingsScreen.navigationOptions = ({ theme }) => {
+//   return {
+//     // headerLeft: () => (
+//     //   <View style={{ flex: 1, paddingLeft: 16 }}>
+//     //     <Text style={gStyle.text[theme]}>left</Text>
+//     //   </View>
+//     // ),
+//     // headerRight: () => (
+//     //   <View style={{ flex: 1, paddingRight: 16 }}>
+//     //     <Text style={gStyle.text[theme]}>right</Text>
+//     //   </View>
+//     // ),
+//     headerTitle: () => (
+//       <View style={{ flex: 1 }}>
+//       <Text>Plant List</Text>
+//       </View>
+//     )
+//   };
+// };
+
+
+// SettingsScreen.propTypes = {
+//   // required
+//   navigation: PropTypes.object.isRequired,
+//   screenProps: PropTypes.object.isRequired
+// };
 
 /*
 // shoutout @notbrent: https://snack.expo.io/H105kxsG7
@@ -85,4 +121,4 @@ headerLeft: !shouldShowBackButton(navigation) ? (
 ) : null,
 */
 
-export default SettingsScreen;
+// export default SettingsScreen;
