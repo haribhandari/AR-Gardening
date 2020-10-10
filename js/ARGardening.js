@@ -4,6 +4,7 @@ import TimerMixin from 'react-timer-mixin';
 import PropTypes from 'prop-types';
 import {
   ViroARScene,
+  ViroText,
   ViroAmbientLight,
   ViroARPlane,
   ViroMaterials,
@@ -14,6 +15,9 @@ import {
   Viro3DObject,
   ViroAnimations,
 } from 'react-viro';
+import {
+  Alert,
+} from 'react-native';
 
 var createReactClass = require('create-react-class');
 
@@ -76,6 +80,8 @@ var ARGardening = createReactClass({
           position={[0, this.props.arSceneNavigator.viroAppProps.yOffset, 0]}
           source={this.props.arSceneNavigator.viroAppProps.objectSource}
           type = "OBJ" onLoadEnd={this._onLoadEnd} onLoadStart={this._onLoadStart}
+          onClick={this._onClick}
+          onClickState={this._onClickState}
           onRotate={this._onRotate}
           onPinch={this._onPinch} />
 
@@ -102,8 +108,22 @@ var ARGardening = createReactClass({
   _onTrackInit() {
     this.props.arSceneNavigator.viroAppProps._onTrackingInit();
   },
-
-
+  _onClick(source) {
+    Alert.alert(
+      'How to plant',
+      this.props.arSceneNavigator.viroAppProps.recommendation,
+     
+      );
+  },
+  _onClickState(stateValue, source) {
+    if(stateValue == 1) {
+        console.log("User has click-down on the image!");
+    } else if(stateValue == 2) {
+        console.log("User has click-up on the image!");
+    } else if(stateValue == 3) { 
+        console.log("User has finally clicked on the image!");
+    }
+  },
   /*
    Rotation should be relative to its current rotation *not* set to the absolute
    value of the given rotationFactor.

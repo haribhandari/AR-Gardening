@@ -104,16 +104,16 @@ export default class ViroSample extends Component {
     'Choose an object',
     'Select an object to place in the world!',
     [
-      {text: 'Plant1', onPress: () => this._onShowObject(0, "coffee_mug", 0)},
-      {text: 'Plant2', onPress: () => this._onShowObject(1, "flowers", .290760)},
-      {text: 'Plant3', onPress: () => this._onShowObject(2, "smile_emoji", .497823)},
+      {text: 'Plant1', onPress: () => this._onShowObject(0, "Plant1","Plant this in well-drained soil, in an area with full sun ", 0)},
+      {text: 'Plant2', onPress: () => this._onShowObject(1, "Plant2","Plant in a semi-shaded position in well-drained, sandy soil ", .290760)},
+      {text: 'Plant3', onPress: () => this._onShowObject(2, "Plant3","Use a quality Native mix. Force Scaevola to grow thicker by pinching back the growths and remove any weeds that grow around it. Halfway through the season plants can become a little stringy and need hard pruning to produce new shoots. ", .497823)},
     ],
     );
   }
 
-  _onShowObject(objIndex, objUniqueName, yOffset) {
+  _onShowObject(objIndex, objUniqueName, recommendation, yOffset) {
     this.setState({
-        viroAppProps:{...this.state.viroAppProps, displayObject: true, yOffset: yOffset, displayObjectName: objUniqueName, objectSource:objArray[objIndex]},
+        viroAppProps:{...this.state.viroAppProps, displayObject: true, yOffset: yOffset, displayObjectName: objUniqueName, recommendation: recommendation, objectSource:objArray[objIndex]},
     });
   }
 }
