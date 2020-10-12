@@ -1,11 +1,22 @@
 import React from 'react';
+import { Actions, Router, Scene } from 'react-native-router-flux';
 import { StatusBar, View } from 'react-native';
 import { AppLoading, ScreenOrientation } from 'expo';
 import { Appearance } from 'react-native-appearance';
 import { device, func, gStyle } from './src/constants';
+import FirstScene from './src/screens/HomeScreen';
+import SecondScene from './src/screens/bugs';
 
 // tab navigator
 import Stack from './src/navigation/Stack';
+
+// eslint-disable-next-line no-unused-expressions
+<Router>
+  <Scene key="app">
+    <Scene key="scene1" component={FirstScene} hideNavBar />
+    <Scene key="scene2" component={SecondScene} hideNavBar />
+  </Scene>
+</Router>;
 
 class App extends React.Component {
   constructor(props) {

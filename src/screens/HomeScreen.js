@@ -1,9 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Actions, Router, Scene } from 'react-native-router-flux';
+
 import { SliderBox } from 'react-native-image-slider-box';
 
 import {
   ScrollView,
+  TouchableOpacity,
   Text,
   View,
   StyleSheet,
@@ -58,11 +61,13 @@ export default class App extends React.Component {
         photo:
           'https://cdn.pixabay.com/photo/2017/02/01/00/18/floral-2028496_960_720.png'
       },
+
       {
         name: 'Buy Planting Products',
         photo:
           'https://cdn.pixabay.com/photo/2020/04/17/19/48/city-5056657_960_720.png'
       },
+
       {
         name: 'Planting Tips',
         photo:
