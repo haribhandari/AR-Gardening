@@ -95,7 +95,13 @@ export default class App extends React.Component {
           // style={{flex:1}}
           vertical
           data={this.state.data}
-          renderItem={({ item }) => <Item item={item} />}
+          renderItem={({ item }) => {
+            return (
+              <TouchableOpacity onPress={() => Actions.scene2()}>
+                Item item={item}
+              </TouchableOpacity>
+            );
+          }}
           numColumns={2}
         />
         <Text style={styles.text}>Plant Joke of the day!</Text>
